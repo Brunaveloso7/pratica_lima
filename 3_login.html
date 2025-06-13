@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+   <meta htttp.equiv="refresh" content="4; url=4_desktop.html">
   <title>Tela de Login</title>
   <style>
     body {
@@ -26,88 +27,69 @@
     .date {
       font-size: 1.5em;
       margin-bottom: 50px;
+      text-transform: capitalize;
     }
 
     .login-area {
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.4);
-      padding: 30px;
-      border-radius: 15px;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 40px;
+      border-radius: 20px;
       display: none;
       flex-direction: column;
       align-items: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
     }
 
-    .login-area h2 {
-      margin-bottom: 10px;
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 25px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     }
 
     .login-area input {
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      font-size: 1em;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      font-size: 1.1em;
+      outline: none;
+      width: 250px;
+      transition: background-color 0.3s, border-color 0.3s;
     }
 
-    .login-area button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border: none;
-      background-color: #0078D7;
-      color: white;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
+    .login-area input::placeholder {
+      color: #ccc;
+    }
+
+    .login-area input:focus {
+      background-color: rgba(255,255,255,0.3);
+      border-color: #fff;
     }
 
     body:hover .login-area {
       display: flex;
     }
-
-    /* Estilo para a imagem do usuário (avatar) */
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .hint {
-      font-size: 0.9em;
-      color: #ccc;
-      margin-top: 5px;
-    }
   </style>
 </head>
 <body>
 
-  <div class="clock" id="clock">00:00</div>
-  <div class="date" id="date">Carregando data...</div>
+<div class="clock" id="clock"></div>
+<div class="date" id="date"></div>
 
-  <div class="login-area">
-    <!-- Imagem do usuário com fundo transparente -->
-    <img src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="Foto do usuário" class="avatar">
-    
-    <h2>Usuário</h2>
-    <input type="password" placeholder="Digite sua senha" />
-    <button>Entrar</button>
-  </div>
+<div class="login-area">
+  <img class="avatar" src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="Avatar">
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      document.getElementById('clock').textContent = `${hours}:${minutes}`;
+  <div class="username">Usuário</div>
+  <style> 
+  *{font-family:'Seogo UI, Tahoma, Geneva, Verdana, sans-serif'
+  }    
+</style>
+  <input type="password" placeholder="Senha">
+</div>
 
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      document.getElementById('date').textContent = now.toLocaleDateString('pt-BR', options);
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
 </body>
 </html>

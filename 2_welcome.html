@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta http.equiv="refresh" content="6; url=3_login.html">
   <title>Tela de Entrada</title>
   <style>
     * {
@@ -21,7 +22,7 @@
       color: white;
       font-family: 'Segoe UI', sans-serif;
     }
-
+   
     .clock {
       font-size: 5em;
       font-weight: 300;
@@ -35,32 +36,47 @@
     }
 
     .hint {
-      position: absolute;
-      bottom: 30px;
-      font-size: 1em;
-      opacity: 0.8;
+      margin-top: 40px;
+      font-size: 1.2em;
+      opacity: 0.9;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .hint:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
 <body>
+
   <div class="clock" id="clock">00:00</div>
   <div class="date" id="date">segunda-feira, 1 de janeiro de 2025</div>
-  <div class="hint">Pressione qualquer tecla ou clique para continuar</div>
+
+  <!-- Mensagem clicável -->
+  <div class="hint" onclick="window.location.href='3_login.html'">
+    Pressione qualquer tecla ou clique para continuar
+  </div>
 
   <script>
     function updateClock() {
       const now = new Date();
 
-      // Relógio (hora:minuto)
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       document.getElementById('clock').textContent = `${hours}:${minutes}`;
 
-      // Data por extenso
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       const dateString = now.toLocaleDateString('pt-BR', options);
       document.getElementById('date').textContent = dateString;
     }
+
+    // Redirecionar ao pressionar qualquer tecla
+    document.addEventListener('keydown', function () {
+      window.location.href = '3_login.html';
+    });
 
     setInterval(updateClock, 1000);
     updateClock();
